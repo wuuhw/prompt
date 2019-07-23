@@ -20,6 +20,9 @@ function createWindow () {
   // mainWindow.loadFile('index.html')
   mainWindow.loadURL('http://localhost:3000');
 
+  mainWindow.webContents.openDevTools()
+
+
   // Open the DevTools.
   // mainWindow.webContents.openDevTools()
 
