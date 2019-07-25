@@ -4,7 +4,9 @@ const path = require('path')
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
-let mainWindow
+let mainWindow;
+const isDev = require('electron-is-dev');
+
 
 function createWindow () {
   // Create the browser window.
@@ -12,19 +14,24 @@ function createWindow () {
     width: 800,
     height: 600,
     webPreferences: {
-      preload: path.join(__dirname, 'preload.js')
+      nodeIntegration: true,
+      // preload: path.join(__dirname, 'preload.js')
     }
   })
 
   // and load the index.html of the app.
   // mainWindow.loadFile('index.html')
-  mainWindow.loadURL('http://localhost:3000');
+  
+  mainWindow.loadURL(
+    isDev ? 
+    'http://localhost:3000' :
+    `file://${path.join(__dirname, '../build/index.html')}`);
 
-  mainWindow.webContents.openDevTools()
-
-
-  // Open the DevTools.
-  // mainWindow.webContents.openDevTools()
+  if (isDev) {
+    // Open the DevTools.
+    //BrowserWindow.addDevToolsExtension('<location to your react chrome extension>');
+    mainWindow.webContents.openDevTools();
+  }
 
   // Emitted when the window is closed.
   mainWindow.on('closed', function () {

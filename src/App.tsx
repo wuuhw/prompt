@@ -1,20 +1,17 @@
 import React from 'react';
+import electron from 'electron';
 import logo from './logo.svg';
 import './App.css';
 
-// eslint-disable
-console.log((window as any).require)
-// const electron = (window as any).require('electron');
 // console.log(electron)
-// const fs = electron.remote.require('fs');
-// const ipcRenderer  = electron.ipcRenderer;
-
-
 const App: React.FC = () => {
-  const name:string = '1'
+  // const name:string = '1'
   return (
     <div className="App">
-      <header className="App-header">
+      <div>
+        <p>文件管理</p>
+      </div>
+      {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
@@ -28,7 +25,7 @@ const App: React.FC = () => {
         >
           Learn React
         </a>
-      </header>
+      </header> */}
     </div>
   );
 }
